@@ -7,7 +7,8 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @blog_post.author %>
+  <%= @blog_post.user.username %> <br />
+  <h6>Created at: <%= @blog_post.created_at %></h6>
 </p>
 
 <p>
@@ -15,19 +16,27 @@
   <%= @blog_post.content %>
 </p>
 
-<%= link_to 'Edit', edit_blog_post_path(@blog_post) %>
-<%= link_to 'Back', blog_posts_path %>
+<div class="btn btn-group">
+		<%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-default" %> |
+		<%= link_to 'Back', blog_posts_path, class: "btn btn-default" %>
+	</div>
 
 
 <div>
 	<%= render 'comments/form' %>
 </div>
 
-<div>
+<div class="panel panel-default">
+	<div class="panel-header">
+		<h4>Comments</h4>
+	</div>
 	<% @blog_post.comments.each do |comment| %>
-	<p>
-		<%= comment.author %> says... <br />
-		<%= comment.comment_entry %>
-	</p>
+		<div class="panel-body">
+			<p>
+				<strong><%= comment.user.username %> </strong>says... <br />
+				<%= comment.comment_entry %><br />
+				<h6>Created at: <%= comment.created_at %></h6>
+			</p>
+		</div>
 	<% end %>
 </div>

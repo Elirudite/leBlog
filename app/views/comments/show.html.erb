@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @comment.author %>
-</p>
+<div class="well">
+	<p>
+	  <strong>Author:</strong>
+	  <%= @comment.author %>
+	</p>
 
-<p>
-  <strong>Comment entry:</strong>
-  <%= @comment.comment_entry %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+	<p>
+	  <strong>Comment entry:</strong>
+	  <%= @comment.comment_entry %>
+	</p>
+	<div class="btn btn-group">
+		<%= link_to 'Edit', edit_comment_path(@comment), class: "btn btn-default" %> |
+		<%= link_to 'Back', comments_path, class: "btn btn-default" %>
+	</div>
+</div>
